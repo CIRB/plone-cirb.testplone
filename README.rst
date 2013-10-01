@@ -49,7 +49,7 @@ You also have to add tests in your **buildout.cfg**::
         
 And finaly add tests into Plone eggs
 
-- First create a file **plonetheme/bric/testing.py**:
+- First create a file **plonetheme/bric/testing.py**::
 
     from plone.testing import z2
     from plone.app.testing import PloneWithPackageLayer
