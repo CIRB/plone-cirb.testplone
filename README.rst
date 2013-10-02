@@ -37,7 +37,7 @@ You also have to add tests in your **buildout.cfg**::
 
     [test]
     recipe = zc.recipe.testrunner
-    defaults = ['-s', 'plonetheme.bric, '--auto-color', '--auto-progress']
+    defaults = ['-s', 'plonetheme.bric', '--auto-color', '--auto-progress']
     eggs =
         Plone
         plone.app.upgrade
