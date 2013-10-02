@@ -15,6 +15,11 @@ In this example, the Plone theme egg is called: **plonetheme.bric**
 
 First you have to add some information into your **setup.py** (include plone.app.robotframework)::
 
+    install_requires=[
+        ...
+        'cirb.testplone',
+    ]
+
     extras_require={
       'test': [
           ...
