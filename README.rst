@@ -4,7 +4,7 @@
 Introduction
 ============
 
-This documentation is used to test some plone theme,
+This documentation is used to test some plone theme. It explain how to use this module to laucnh RobotFramework test into a Plone theme.
 
 Information came from http://developer.plone.org/reference_manuals/external/plone.app.robotframework/happy.html
 
@@ -13,7 +13,7 @@ Example
 
 In this example, the Plone theme egg is called: **plonetheme.bric**
 
-First you have to add some information into your **setup.py** (include plone.app.robotframework)::
+First you have to add some information into the **setup.py** file of your Plone theme (include plone.app.robotframework and cirb.testplone)::
 
     install_requires=[
         ...
@@ -102,4 +102,19 @@ And finaly add tests into Plone eggs
 Launch tests
 ============
 
-You can now restart buildout (bin/buildout -N) and launch robot test (bin/test)
+You can now restart buildout and launch [robot] test::
+    
+    ./bin/buildout -N
+    ./bin/test
+    
+
+Adding local tests
+==================
+
+You can also adding specifics tests for your Plone theme. You just have to create a my_local_test.robot file (in tests folder) and call it in **test_robot.py** as here ::
+    
+    def test_suite():
+        ...
+        rts = robotsuite.RobotTestSuite('my_local_test.robot')
+        suite.addTests([layered(rts, layer=PLONETHEME_BRIC_ROBOT_TESTING)])
+        return suite
