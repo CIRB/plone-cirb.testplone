@@ -1,27 +1,21 @@
 *** Settings ***
-
 Resource  plone/app/robotframework/selenium.robot
+Resource  plone/app/robotframework/keywords.robot
 
 Library  Remote  ${PLONE_URL}/RobotRemote
 
-Test Setup  Open test browser
-Test Teardown  Close all browsers
+Suite Setup  Suite Setup
+Suite Teardown  Close all browsers
+
 
 *** Test Cases ***
-
 Site Administrator can access control panel
-    Given I'm logged in as a 'Site Administrator'
-     When I open the personal menu
-     Then I see the Site Setup -link
+    Go to homepage
+    Open User Menu
+    Element should be visible  css=#personaltools-plone_setup
+
 
 *** Keywords ***
-
-I'm logged in as a '${ROLE}'
-    Enable autologin as  ${ROLE}
-    Go to  ${PLONE_URL}
-
-I open the personal menu
-    Click link  css=#user-name
-
-I see the Site Setup -link
-    Element should be visible  css=#personaltools-plone_setup
+Suite Setup
+    Open test browser
+    Enable autologin as  'Site Administrator'
